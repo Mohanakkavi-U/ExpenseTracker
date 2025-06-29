@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      style="-fx-padding: 15px;"
+      fx:controller="main.ExpenseTrackerController">
+
+    <Label text="Personal Expense Tracker" style="-fx-font-size: 18px; -fx-font-weight: bold"/>
+
+    <HBox spacing="10">
+        <DatePicker fx:id="datePicker"/>
+        <TextField fx:id="itemField" promptText="Item"/>
+        <TextField fx:id="amountField" promptText="Amount"/>
+        <Button text="Add Expense" onAction="#handleAddExpense"/>
+    </HBox>
+
+    <TableView fx:id="tableView" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="dateColumn" text="Date" prefWidth="150"/>
+            <TableColumn fx:id="itemColumn" text="Item" prefWidth="200"/>
+            <TableColumn fx:id="amountColumn" text="Amount (₹)" prefWidth="150"/>
+        </columns>
+    </TableView>
+
+    <HBox spacing="10">
+        <Label text="Filter by Date:"/>
+        <DatePicker fx:id="filterDatePicker"/>
+        <Button text="Filter" onAction="#handleFilterByDate"/>
+        <Button text="Clear Filter" onAction="#handleClearFilter"/>
+        <Button text="Delete Selected" onAction="#handleDeleteSelected" style="-fx-background-color: #ff4444; -fx-text-fill: white;"/>
+        <Button text="Export to TXT" onAction="#handleExportToTxt" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+    </HBox>
+
+    <Label fx:id="totalLabel" text="Total: ₹0.00" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+</VBox>
